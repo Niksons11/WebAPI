@@ -1,0 +1,25 @@
+﻿@model WebApi.Entities.LimitedSize
+@{
+    ViewData["Title"] = "Add File size";
+}
+
+<div class="text-center">
+    <h1>Add File Size</h1>
+    <div>
+        <form asp-controller="Home" asp-action="AddFileSize" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div>
+                <label asp-for="FileSizeLimit">Max upload file size (in bytes): </label>
+                <input asp-for="FileSizeLimit" />
+                <span asp-validation-for="FileSizeLimit"></span>
+            </div>
+
+
+            <input type="submit" value="Save" />
+        </form>
+
+    </div>
+
+
+</div>

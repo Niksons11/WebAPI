@@ -1,0 +1,51 @@
+﻿@model WebApi.Entities.LimitedResolution
+@{
+    ViewData["Title"] = "Change Resolution rule";
+}
+
+<div class="text-center">
+    <h1>Change Resolution rule</h1>
+    <div>
+        <form asp-controller="Home" asp-action="AddResolutions" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div>
+                <label asp-for="MinHeight">Min height: </label>
+                <input asp-for="MinHeight" />
+                <span asp-validation-for="MinHeight"></span>
+            </div>
+            <div>
+                <label asp-for="MinWidth">Min width: </label>
+                <input asp-for="MinWidth" />
+                <span asp-validation-for="MinWidth"></span>
+            </div>
+            <div>
+                <label asp-for="MaxHeight">Max height: </label>
+                <input asp-for="MaxHeight" />
+                <span asp-validation-for="MaxHeight"></span>
+            </div>
+            <div>
+                <label asp-for="MaxWidth">Max Width: </label>
+                <input asp-for="MaxWidth" />
+                <span asp-validation-for="MaxWidth"></span>
+            </div>
+            <div>
+                <label asp-for="SetHeight">Set height: </label>
+                <input asp-for="SetHeight" />
+                <span asp-validation-for="SetHeight"></span>
+            </div>
+            <div>
+                <label asp-for="SetWidth">Set Width: </label>
+                <input asp-for="SetWidth" />
+                <span asp-validation-for="SetWidth"></span>
+            </div>
+
+
+
+            <input type="submit" value="Save" />
+        </form>
+
+    </div>
+
+
+</div>

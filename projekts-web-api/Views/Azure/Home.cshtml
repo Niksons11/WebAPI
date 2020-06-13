@@ -1,0 +1,54 @@
+﻿@using WebApi.Models;
+@model IndexViewModel
+@{
+    ViewData["Title"] = "Home";
+}
+<h1 align="center">Files:</h1>
+<table align="center">
+    <tbody>
+        @foreach (var data in Model.FileData)
+        {
+            @if (data.Publisher == User.Identity.Name)
+            {
+                <tr>
+                    <td>
+                        @if (data.FileType.Contains("image"))
+                        {
+                            <a href="@data.Url"><img src="@data.Url" /></a>
+                        }
+                        else
+                        {
+                            <a href="@data.Url">@data.FileName</a>
+                        }
+                    </td>
+                </tr>
+
+            }
+        }
+
+
+    </tbody>
+
+</table>
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <div align="center">
+        <a asp-action="Home"
+           asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+           class="btn btn-outline-dark">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Back
+        </a>
+    </div>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <div align="center">
+        <a asp-action="Home"
+           asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+           class="btn btn-outline-dark">
+            Forward
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+        </div>
+}

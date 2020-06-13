@@ -1,0 +1,24 @@
+﻿@using WebApi.Entities
+@using System.Linq
+@model IQueryable<WebApi.Entities.LimitedSize>
+@{
+    ViewData["Title"] = "File Size";
+}
+@if (!Model.Any())
+{
+    <div class="text-left">
+        <a asp-controller="Home" asp-action="AddFileSize">Create a limited file size</a>
+    </div>
+}
+    <h3>Max File size:</h3>
+    <div class="text-left">
+        @foreach (LimitedSize entity in Model)
+        {
+            <div>
+                @entity.FileSizeLimit byte(-s)
+                <input type="hidden" value="@entity.Id" name="Id" />
+                <a asp-controller="Home" asp-action="AddFileSize" asp-route-id="@entity.Id">Edit</a>
+            </div>
+
+        }
+    </div>

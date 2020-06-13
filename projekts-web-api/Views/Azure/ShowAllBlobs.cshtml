@@ -1,0 +1,64 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Files";
+}
+
+<h1 align="center">All Files:</h1>
+<table class="table table-bordered" align="center">
+    <thead>
+        <tr>
+            <th>FileName</th>
+            <th>Publisher's File name</th>
+            <th>FileSize</th>
+            <th>FileType</th>
+            <th>Modified On</th>
+            <th>Preview</th>
+            <th>Download</th>
+            <th>Delete</th>
+            <th>Publisher</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in Model.FileData)
+        {
+            <tr>
+                <td>@data.FileName</td>
+                <td>@data.PublisherFileName</td>
+                <td>@data.FileSize bytes</td>
+                <td>@data.FileType</td>
+                <td>@data.ModifiedOn</td>
+                @if (data.FileType.Contains("image"))
+                {
+                    <td> <a href="@data.Url"><img src="@data.Url" width="100" height="100" /></a></td>
+                }
+                else
+                {
+                    <td> <a href="@data.Url"></a></td>
+                }
+                <td> <a href="/azure/Download?blobName=@data.FileName">Download</a> </td>
+                <td> <a href="/azure/Delete?blobName=@data.FileName">Delete</a> </td>
+                <td>@data.Publisher</td>
+                <td>@data.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="ShowAllBlobs"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       class="btn btn-outline-dark">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Back
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="ShowAllBlobs"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       class="btn btn-outline-dark">
+        Forward
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}

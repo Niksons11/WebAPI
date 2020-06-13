@@ -1,0 +1,56 @@
+﻿@using WebApi.Entities
+@model IndexViewModel
+
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+
+<div class="text-left">
+    <a asp-controller="Home" asp-action="AdmRegistration">Create a new user account</a>
+</div>
+
+
+<h3>Users:</h3>
+<div class="text-left">
+    @foreach (User entity in Model.Users)
+    {
+        <div>
+
+            <form method="post" asp-controller="Home" asp-action="UserDelete">
+                @entity.Username
+                <input type="hidden" value="@entity.Id" name="Id" />
+                <input type="submit" onclick="return confirm('are you sure you want to delete: @entity.Username ?')" value="Delete" />
+                <a asp-controller="Home" asp-action="UserEdit" asp-route-id="@entity.Id">Edit</a>
+                <hr />
+            </form>
+
+        </div>
+
+    }
+</div>
+
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <div align="center">
+        <a asp-action="Users"
+           asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+           class="btn btn-outline-dark">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Back
+        </a>
+    </div>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <div align="center">
+        <a asp-action="Users"
+           asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+           class="btn btn-outline-dark">
+            Forward
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    </div>
+}
+

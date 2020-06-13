@@ -1,0 +1,37 @@
+﻿@using WebApi.Entities
+@model IQueryable<WebApi.Entities.LimitedResolution>
+@{
+    ViewData["Title"] = "Resolution List";
+}
+
+@if (!Model.Any())
+{
+    <div class="text-left">
+        <a asp-controller="Home" asp-action="AddResolutions">Define file resolution</a>
+    </div>
+}
+
+    <h3>Image Resolutions:</h3>
+    <div class="text-left">
+        @foreach (LimitedResolution entity in Model)
+        {
+        <div>
+
+            Minimal height: @entity.MinHeight
+            <br />
+            Minimal width: @entity.MinWidth
+            <br />
+            Maximal height: @entity.MaxHeight
+            <br />
+            Maximal width: @entity.MaxWidth
+            <br />
+            Height after resize: @entity.SetHeight
+            <br />
+            Width after resize: @entity.SetWidth
+            <br />
+            <input type="hidden" value="@entity.Id" name="Id" />
+            <a asp-controller="Home" asp-action="AddResolutions" asp-route-id="@entity.Id">Edit</a>
+        </div>
+
+        }
+    </div>

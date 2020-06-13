@@ -1,0 +1,30 @@
+﻿
+@model WebApi.Entities.FileProperties
+@{
+    ViewData["Title"] = "Add Extensions";
+}
+
+
+<body>
+
+    <div class="text-center">
+        <h1>Add Extensions </h1>
+        <div>
+            <form asp-controller="Home" asp-action="AddExtensions" method="post">
+                <input type="hidden" asp-for="Id" />
+                <div>
+                    <label asp-for="FileNameExtension">FileName Extension: </label>
+                    <input asp-for="FileNameExtension" />
+                    <span asp-validation-for="FileNameExtension"></span>
+                </div>
+
+                <input type="submit" value="Save" />
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+</body>

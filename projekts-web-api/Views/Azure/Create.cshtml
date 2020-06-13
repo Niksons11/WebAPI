@@ -1,0 +1,31 @@
+﻿@model WebApi.Models.FileData
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" enctype="multipart/form-data" asp-controller="Azure" asp-action="Create">
+            <div class="form-group">
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <label> Select File </label>
+                <input class="form-control" name="files" multiple="multiple" type="file" />
+            </div>
+            <div>
+                <label asp-for="PublisherFileName">File name: </label>
+                <input asp-for="PublisherFileName" />
+                <span asp-validation-for="PublisherFileName"></span>
+            </div>
+            <div>
+                <label asp-for="Description">Description:</label>
+                <input asp-for="Description" />
+                <span asp-validation-for="Description"></span>
+            </div>
+
+            <div class="form-group">
+                <input class="btn btn-success" type="submit" value="Submit" />
+            </div>
+        </form>
+
+    </div>
+</div>

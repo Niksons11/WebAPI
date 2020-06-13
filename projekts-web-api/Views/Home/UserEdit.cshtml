@@ -1,0 +1,46 @@
+﻿@model WebApi.Entities.User
+@{
+    ViewData["Title"] = "Edit User";
+}
+    <head>
+        <meta name="viewport" content="width=device-width" />
+    </head>
+<div class="text-center">
+    <h1>Edit Profile:</h1> 
+    <div>
+        <form asp-controller="Home" asp-action="UserEdit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div>
+                <label asp-for="Username">Username (unchangeable): </label>
+                <input asp-for="Username" readonly="@(true)" />
+                <span asp-validation-for="Username"></span>
+            </div>
+            <div>
+                <label asp-for="FirstName">First Name: </label>
+                <input asp-for="FirstName" />
+                <span asp-validation-for="FirstName"></span>
+            </div>
+            <div>
+                <label asp-for="LastName">Last Name: </label>
+                <input asp-for="LastName" />
+                <span asp-validation-for="LastName"></span>
+            </div>
+
+            <div>
+                <label asp-for="Password">Password: </label>
+                <input asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div>
+                <label asp-for="Role"></label>
+                <input asp-for="Role" />
+                <span asp-validation-for="Role"></span>
+            </div>
+
+            <input type="submit" value="Save" />
+        </form>
+
+    </div>
+
+
+</div>

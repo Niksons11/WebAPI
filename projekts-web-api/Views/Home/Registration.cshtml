@@ -1,0 +1,47 @@
+﻿
+@model WebApi.Entities.User
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<body>
+
+    <div class="text-center">
+        <h1>Create a new profile</h1>
+        <p><em>Fill in <u><b>all</b></u> fields below:</em></p>
+        <div>
+            <form asp-controller="Home" asp-action="Registration" method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="Role" value="user" />
+                <div>
+                    <label asp-for="FirstName"></label>
+                    <input asp-for="FirstName" />
+                    <span asp-validation-for="FirstName"></span>
+                </div>
+                <div>
+                    <label asp-for="LastName"></label>
+                    <input asp-for="LastName" />
+                    <span asp-validation-for="LastName"></span>
+                </div>
+                <div>
+                    <label asp-for="Username"></label>
+                    <input asp-for="Username" />
+                    <span asp-validation-for="Username"></span>
+                </div>
+                <div>
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" />
+                    <span asp-validation-for="Password"></span>
+                </div>
+
+
+                <input type="submit" value="Save" />
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+</body>

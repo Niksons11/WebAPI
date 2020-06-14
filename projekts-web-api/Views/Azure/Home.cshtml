@@ -1,5 +1,7 @@
 ﻿@using WebApi.Models;
 @model IndexViewModel
+
+
 @{
     ViewData["Title"] = "Home";
 }
@@ -51,4 +53,11 @@
             <i class="glyphicon glyphicon-chevron-right"></i>
         </a>
         </div>
+}
+@section Scripts {
+    <script src="/path/to/lib/jquery.waypoints.min.js"></script>
+    <script src="/path/to/shortcuts/infinite.min.js"></script>
+    var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0]
+})
 }
